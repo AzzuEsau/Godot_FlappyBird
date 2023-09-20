@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://boenbc4jl27sa"]
+[gd_scene load_steps=8 format=3 uid="uid://boenbc4jl27sa"]
 
 [ext_resource type="Texture2D" uid="uid://bt5lyaq5cllrd" path="res://media/sprites/character/red/redbird-downflap.png" id="1_6tkje"]
 [ext_resource type="Script" path="res://scripts/Player.cs" id="1_ket8j"]
@@ -33,7 +33,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_aw4ue"]
 radius = 11.0454
 
-[node name="Player" type="RigidBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ywy0u"]
+
+[node name="Player" type="RigidBody2D" groups=["Player"]]
 script = ExtResource("1_ket8j")
 metadata/_edit_group_ = true
 
@@ -44,3 +46,9 @@ autoplay = "idle"
 
 [node name="CollisionPlayer" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_aw4ue")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(1.55714, 1.55714)
+shape = SubResource("CircleShape2D_ywy0u")

@@ -3,7 +3,7 @@ using System;
 
 public partial class Paralax : ParallaxBackground {
 	#region Variables
-		private float paralaxVelocity = 2;
+		private float paralaxVelocity = 100;
 	#endregion
 
 	#region Godot Functions
@@ -14,7 +14,7 @@ public partial class Paralax : ParallaxBackground {
 
 		// Called every frame. 'delta' is the elapsed time since the previous frame.
 		public override void _Process(double delta) {
-			ScrollBaseOffset = new Vector2(ScrollBaseOffset.X - paralaxVelocity, ScrollBaseOffset.Y);
+			ScrollBaseOffset = new Vector2((float)(ScrollBaseOffset.X - paralaxVelocity * delta), ScrollBaseOffset.Y);
 		}
 	#endregion
 

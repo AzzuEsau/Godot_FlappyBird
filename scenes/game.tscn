@@ -1,14 +1,42 @@
-[gd_scene load_steps=6 format=3 uid="uid://2b1fs561npnh"]
+[gd_scene load_steps=9 format=3 uid="uid://2b1fs561npnh"]
 
+[ext_resource type="Script" path="res://scripts/GameManager.cs" id="1_3k1bl"]
 [ext_resource type="PackedScene" uid="uid://boenbc4jl27sa" path="res://resources/prefabs/player/player.tscn" id="1_jcqbm"]
 [ext_resource type="Script" path="res://scripts/Paralax.cs" id="2_ptgq8"]
 [ext_resource type="Texture2D" uid="uid://5u66futhhbq4" path="res://media/sprites/bg/background-day.png" id="3_x6tc2"]
 [ext_resource type="Texture2D" uid="uid://bp8ylueanynyk" path="res://media/sprites/floor/base.png" id="4_4n1sq"]
+[ext_resource type="FontFile" uid="uid://npefoxuc8g1y" path="res://media/fonts/Flappy-Bird.ttf" id="6_ms3nu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n3ukw"]
+font = ExtResource("6_ms3nu")
+font_size = 110
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_42ocg"]
 size = Vector2(374, 99)
 
 [node name="game" type="Node"]
+script = ExtResource("1_3k1bl")
+
+[node name="ScoreLabel" type="Label" parent="."]
+z_index = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 16.0
+offset_right = 20.0
+offset_bottom = 86.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "0"
+label_settings = SubResource("LabelSettings_n3ukw")
+horizontal_alignment = 1
+
+[node name="ObstacleTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 
 [node name="Player" parent="." instance=ExtResource("1_jcqbm")]
 position = Vector2(171, 282)
@@ -17,7 +45,7 @@ position = Vector2(171, 282)
 script = ExtResource("2_ptgq8")
 
 [node name="ParallaxBg" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(422, 0)
+motion_mirroring = Vector2(420, 0)
 
 [node name="BgSprite" type="Sprite2D" parent="ParallaxBackground/ParallaxBg"]
 position = Vector2(209, 235)
@@ -26,13 +54,13 @@ texture = ExtResource("3_x6tc2")
 
 [node name="ParallaxFloor" type="ParallaxLayer" parent="ParallaxBackground"]
 scale = Vector2(1.33469, 1.33469)
-motion_mirroring = Vector2(335, 0)
+motion_mirroring = Vector2(336, 0)
 
 [node name="FloorSprite" type="Sprite2D" parent="ParallaxBackground/ParallaxFloor"]
 position = Vector2(168.578, 453.288)
 texture = ExtResource("4_4n1sq")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["Obstacle"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(177, 581)

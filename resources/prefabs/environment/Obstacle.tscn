@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://7w5cmn57vau"]
+
+[ext_resource type="Texture2D" uid="uid://bcdspfodcufqf" path="res://media/sprites/pipes/pipe-green.png" id="1_ql058"]
+[ext_resource type="Script" path="res://scripts/Obstacle.cs" id="1_ynwvv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n686n"]
+size = Vector2(44, 317)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw73u"]
+
+[node name="Obstacle" type="Node2D"]
+position = Vector2(500, 330)
+script = ExtResource("1_ynwvv")
+
+[node name="TuberiaButtom" type="Area2D" parent="."]
+position = Vector2(0, 392)
+scale = Vector2(1.10754, 2.08782)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TuberiaButtom"]
+texture = ExtResource("1_ql058")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuberiaButtom"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_n686n")
+
+[node name="TuberiaTop" type="Area2D" parent="."]
+position = Vector2(0, -395)
+rotation = -3.14159
+scale = Vector2(1.10754, 2.08782)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="TuberiaTop"]
+texture = ExtResource("1_ql058")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TuberiaTop"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_n686n")
+
+[node name="Score" type="Area2D" parent="."]
+scale = Vector2(1, 0.880001)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Score"]
+position = Vector2(9, 0)
+scale = Vector2(1.84, 6.88325)
+shape = SubResource("RectangleShape2D_bw73u")
