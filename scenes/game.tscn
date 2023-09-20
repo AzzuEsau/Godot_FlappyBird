@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://2b1fs561npnh"]
+[gd_scene load_steps=12 format=3 uid="uid://2b1fs561npnh"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.cs" id="1_3k1bl"]
 [ext_resource type="PackedScene" uid="uid://boenbc4jl27sa" path="res://resources/prefabs/player/player.tscn" id="1_jcqbm"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://5u66futhhbq4" path="res://media/sprites/bg/background-day.png" id="3_x6tc2"]
 [ext_resource type="Texture2D" uid="uid://bp8ylueanynyk" path="res://media/sprites/floor/base.png" id="4_4n1sq"]
 [ext_resource type="FontFile" uid="uid://npefoxuc8g1y" path="res://media/fonts/Flappy-Bird.ttf" id="6_ms3nu"]
+[ext_resource type="Texture2D" uid="uid://bn83we6gmhhvu" path="res://media/sprites/messages/message.png" id="7_xigcg"]
+[ext_resource type="Script" path="res://scripts/Message.cs" id="8_6cdmw"]
+[ext_resource type="Texture2D" uid="uid://de3hegqvsvx7t" path="res://media/sprites/messages/gameover.png" id="9_bgysd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n3ukw"]
 font = ExtResource("6_ms3nu")
@@ -69,3 +72,15 @@ shape = SubResource("RectangleShape2D_42ocg")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(177, -51)
 shape = SubResource("RectangleShape2D_42ocg")
+
+[node name="Message" type="Sprite2D" parent="."]
+process_mode = 3
+visible = false
+z_index = 1
+position = Vector2(171, 233)
+texture = ExtResource("7_xigcg")
+script = ExtResource("8_6cdmw")
+
+[node name="Gameover" type="Sprite2D" parent="Message"]
+position = Vector2(6, 214)
+texture = ExtResource("9_bgysd")

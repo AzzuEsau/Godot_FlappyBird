@@ -41,7 +41,9 @@ public partial class Player : RigidBody2D {
 		}
 
 		public void Death() {
-			GetTree().ReloadCurrentScene();
+			GetTree().Paused = true;
+			GetParent().GetNode<Sprite2D>("Message").Show();
+			// GetTree().ReloadCurrentScene();
 		}
 
 		public void IncreaseScore() {
