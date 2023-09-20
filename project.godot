@@ -11,9 +11,21 @@ config_version=5
 [application]
 
 config/name="FlappyBird"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://media/images/icon.svg"
+
+[display]
+
+window/size/viewport_width=360
+window/size/viewport_height=640
+window/stretch/mode="viewport"
 
 [dotnet]
 
 project/assembly_name="FlappyBird"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"

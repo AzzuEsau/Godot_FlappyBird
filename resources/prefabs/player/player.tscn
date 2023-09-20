@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://boenbc4jl27sa"]
+
+[ext_resource type="Texture2D" uid="uid://bt5lyaq5cllrd" path="res://media/sprites/character/red/redbird-downflap.png" id="1_6tkje"]
+[ext_resource type="Script" path="res://scripts/Player.cs" id="1_ket8j"]
+[ext_resource type="Texture2D" uid="uid://bppghcu6oluql" path="res://media/sprites/character/red/redbird-midflap.png" id="2_s7kda"]
+[ext_resource type="Texture2D" uid="uid://dskyb3qc7eeiw" path="res://media/sprites/character/red/redbird-upflap.png" id="3_y1klm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kd0wg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6tkje")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s7kda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y1klm")
+}],
+"loop": false,
+"name": &"flap",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s7kda")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aw4ue"]
+radius = 11.0454
+
+[node name="Player" type="RigidBody2D"]
+script = ExtResource("1_ket8j")
+metadata/_edit_group_ = true
+
+[node name="AnimatedPlayer" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kd0wg")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionPlayer" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_aw4ue")
